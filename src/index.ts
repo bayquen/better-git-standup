@@ -18,12 +18,22 @@ server.registerTool(
         title: "Get Git Commits",
         description: "Reads current repo's git commit history for a given time period (e.g. yesterday or today)",
         inputSchema: {
-            repo_path: {type: "string", description: "Absolute path to git repo folder"},
-            since_date: {type: "string", format: "date", description: "Relative date string for filtering commits after this date"},
-            max_commits: {type: "integer", description: "Max number of commits to list from git history"}
+            type: "object",
+            properties: {
+                repo_path: {type: "string", description: "Absolute path to git repo folder"},
+                since_date: {type: "string", format: "date", description: "Relative date string for filtering commits after this date"},
+                max_commits: {type: "integer", description: "Max number of commits to list from git history"}
+            },
+            required: ["repo_path", "since_date"]
+        }
+    },
+    async ({ repo_path, since_date, max_commits }) => {
+        // TODO: Implement git logic
+        return {
+            content: [{ type: "text", text: "Placeholder: commits would be returned here" }]
         }
     }
-)
+);
 
 server.registerTool(
     "generate_standup_message",
@@ -57,7 +67,6 @@ server.registerTool(
              required: ["commits"]
         }
     },
-
     async ({ commits, time_period }) => {
         // Format commits into standup text; loops thru each commit and displays each as a bullet.
         // E.g: "
@@ -70,3 +79,7 @@ server.registerTool(
         return { content: [{ type: "text", text: message }] };
     }
 );
+
+// // Start the server
+// const transport = new StdioServerTransport();
+// await server.connect(transport);
