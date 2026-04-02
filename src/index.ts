@@ -30,12 +30,16 @@ server.registerTool(
             required: ["repo_path", "time_period"]
         }
     },
-    async ({ repo_path, max_commits, time_period }) => {
-        let since_date: string;
-        let until_date: string;
+    async ({ repo_path, max_commits, time_period }: {
+        repo_path: string;
+        max_commits?: number;
+        time_period: "yesterday" | "today" | "this_week";
+    }) => {
+        let since_date: string = "";
+        let until_date: string = "";
 
         const today = new Date();
-        const todayString = today.toISOString().split('T')[0];
+        const todayString = today.toISOString().slice(0, 10);
 
         switch (time_period) {
             case "yesterday":
@@ -43,7 +47,7 @@ server.registerTool(
                 const yesterday = new Date(today);
                 yesterday.setDate(yesterday.getDate() - 1);
 
-                since_date = yesterday.toISOString().split('T')[0];
+                since_date = yesterday.toISOString().slice(0, 10);
                 until_date = todayString;
                 break;
             case "today":
@@ -52,7 +56,7 @@ server.registerTool(
                 const tomorrow = new Date(today);
                 tomorrow.setDate(tomorrow.getDate() + 1);
 
-                until_date = tomorrow.toISOString().split('T')[0];
+                until_date = tomorrow.toISOString().slice(0, 10);
                 break;
             case "this_week":
                 since_date = todayString;
@@ -63,7 +67,7 @@ server.registerTool(
                 // e.g. If today is Wednesday the 26th, then: 26 - 3 + 1 = 24 (last Monday's date)
                 startOfWeek.setDate(today.getDate() - today.getDay() + 1);
                 
-                since_date = startOfWeek.toISOString().split('T')[0];
+                since_date = startOfWeek.toISOString().slice(0, 10);
                 until_date = todayString;
                 break;
             // Add default case. This tells TypeScript that if we reach this case, we always have valid dates.
@@ -80,8 +84,8 @@ server.registerTool(
         let formatted_output = output.toString();
         const commits = formatted_output
             .split('\n')
-            .filter(line => line.trim())
-            .map(line => {
+            .filter((line: string) => line.trim())
+            .map((line: string) => {
                 const [hash, message, date] = line.split('|');
                 return { hash, message, date };
             });
@@ -124,7 +128,14 @@ server.registerTool(
              required: ["commits"]
         }
     },
-    async ({ commits, time_period }) => {
+    async ({ commits, time_period }: {
+        commits: Array<{
+            hash: string;
+            message: string;
+            date: string;    // from `git log --format ...`
+        }>;
+        time_period: "today" | "yesterday" | "this_week";
+    }) => {
         // Format commits into standup text; loops thru each commit and displays each as a bullet.
         // E.g: "
         //      Today's Standup:
@@ -137,6 +148,6 @@ server.registerTool(
     }
 );
 
-// // Start the server
-// const transport = new StdioServerTransport();
-// await server.connect(transport);
+// Start the server
+const transport = new StdioServerTransport();
+await server.connect(transport);
