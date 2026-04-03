@@ -1,4 +1,4 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.ts";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import { execSync } from "child_process";  // For passing & executing shell/git commands synchronously + returning its output
@@ -17,22 +17,16 @@ server.registerTool(
     "get_commits",
     {
         title: "Get Git Commits",
-        description: "Reads current repo's git commit history for a given time period (e.g. yesterday or today)",
+        description: "Reads current repo's git commit history with date filters",
         inputSchema: {
-            type: "object",
-            properties: {
-                repo_path: {type: "string", description: "Absolute path to git repo folder"},
-                since_date: {type: "string", format: "date", description: "Starting date string for filtering commits (Format: 'YYYY-MM-DD')."},
-                until_date: {type: "string", format: "date", description: "End date string for filtering commits (Format: 'YYYY-MM-DD')."},
-                max_commits: {type: "integer", description: "Max number of commits to list from git history"},
-                time_period: {type: "string", enum: ["yesterday", "today", "this_week"], description: "Time period for standup (e.g. yesterday, today, this_week)"}
-            },
-            required: ["repo_path", "time_period"]
-        }
+            repo_path: z.string().describe("Absolute path to git repo folder"),
+            max_commits: z.number().int().optional().describe("Max number of commits to list"),
+            time_period: z.enum(["yesterday", "today", "this_week"]),
+        },
     },
     async ({ repo_path, max_commits, time_period }: {
         repo_path: string;
-        max_commits?: number;
+        max_commits: number | undefined;
         time_period: "yesterday" | "today" | "this_week";
     }) => {
         let since_date: string = "";
@@ -102,31 +96,21 @@ server.registerTool(
         title: "Generate Standup Message",
         description: "Takes raw commit history from get_commits() tool and formats it into a descriptive, professional standup message (e.g. 'Yesterday I fixed bug X, added feature Y')",
         inputSchema: {
-             type: "object",
-             properties: {
-                commits: {
-                    type: "array",
-                    description: "Array of git commit objects from get_commits tool",
-                    items: {
-                        type: "object",
-                        properties: {
-                            hash: { type: "string" },
-                            message: { type: "string" },
-                            author: { type: "string" },
-                            date: { type: "string" }
-                        },
-                        required: ["hash", "message"]
-                    }
-                },
-                time_period: {
-                    type: "string",
-                    enum: ["today", "yesterday", "this_week"],
-                    description: "What time period the standup covers",
-                    default: "yesterday"
-                }
-             },
-             required: ["commits"]
-        }
+            commits: z
+                .array(
+                    z.object({
+                        hash: z.string(),
+                        message: z.string(),
+                        author: z.string().optional(),
+                        date: z.string()
+                    })
+                )
+                .describe("Array of git commit objects from get_commits tool"),
+            time_period: z
+                .enum(["today", "yesterday", "this_week"])
+                .default("yesterday")
+                .describe("What time period the standup covers"),
+        },
     },
     async ({ commits, time_period }: {
         commits: Array<{
