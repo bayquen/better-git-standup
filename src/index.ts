@@ -1,4 +1,4 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp";
+import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import { execSync } from "child_process";  // For passing & executing shell/git commands synchronously + returning its output
@@ -135,3 +135,4 @@ server.registerTool(
 // Start the server
 const transport = new StdioServerTransport();
 await server.connect(transport);
+console.error("Git standup generation MCP server now running on stdio!");
