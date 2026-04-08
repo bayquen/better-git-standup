@@ -14,20 +14,26 @@ v1.0
 > ### **If using Cursor:**  
 2. Click 'Settings' > 'Tools & MCP'
 3. Under "Installed MCP Servers", click 'New MCP Server' to add a custom server. Cursor's `mcp.json` local file in your machine will open.
-4. Inside that JSON file, add the MCP server's schema like this (with the ABSOLUTE path to the file, wherever it is in your machine):
+4. Inside `mcp.json`, add the MCP server's schema (using the ABSOLUTE path to `mcp.json`, wherever that is in your machine)  
+something like this:
 ```
 {
   "mcpServers": {
     "git-standup-generation": {
       "command": "node",
-      "args": ["C:/Users/user/Documents/GitHub/better-git-standup/build/index.js"]
+      "args": ["C:/[Your Username]/[blah blah]/.../GitHub/better-git-standup/build/index.js"]
     }
   }
 }
 ```
 > **IMPORTANT NOTES**:  
 > - To avoid confusion (for both you and AI), the standup MCP server itself is called `git-standup-generation`. I chose this name to give AI more context on the MCP server's purpose. This is standard practice :)
-> - If you've previously configured other MCP servers for Cursor in `mcp.json`, there's no need to remove them. Just add the 'git-standup-generation' server schema within the "mcpServers" list of objects.
+> - If you've previously configured other MCP servers for Cursor in `mcp.json`, there's no need to remove them. Just add the 'git-standup-generation' server schema within the "mcpServers" list of objects.  
+5.  Restart Cursor (close it completely and relaunch)
+6.  Locate and open the folder of whatever repo you wish to review in Cursor.
+7.  Open Cursor chat and prompt it to give standup for your project  
+e.g: If you want standup summary for past 7 days, say `Get my standup from the past week for this project`
+
 
 - Ask an AI Agent like Cursor, Claude Code, or your preferred choice to generate stand-up messages.
 > *The only requirement is having well-written `git commit` messages!*
