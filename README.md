@@ -1,13 +1,15 @@
 # Better Git Standup >:)  
 v1.0
-> *A simple MCP server to remember the context of your work with a single LLM prompt!* 
+> *A simple MCP server to remember the context of your work with a single LLM prompt!*  
+
 
 ### **"uhh Brandon, who in the flop is this for?"**
 > - *For any technical (or *semi-technical)* folks who want to review their repo commits  
 ...or snoop into others' work, I won't judge ;)*
 > - *For anyone exploring how to implement custom MCP servers*
 
-### "Any requirements, big bro?"
+### "Any requirements, big bro?"  
+![MYBROTHA](https://github.com/user-attachments/assets/c5b4a0e8-bf76-4711-a7a4-f0faff735f0c)  
 > - *Basic knowledge of using a code terminal and a AI-powered coding agent like Cursor or Claude Code*
 > - *Have well-written `git commit` messages!*
 
@@ -43,5 +45,20 @@ something like this:
 e.g: If you want standup summary for past 7 days, say `Get my standup from the past week for this project`  
 
 
-8.  Watch it output clean standup based on your repo's git commits!
+8.  Watch it output clean standup based on your repo's git commits!  
+
+---
+**Accurate depiction of YOU after reading your sexy standups:**  
+
+> **(I gotchu, king)**
+
+
+<img width="367" height="250" alt="Rick from The Walking Dead" src="https://github.com/user-attachments/assets/38a9941f-be2e-46b7-a42e-1b1c43c28ac9" /><br>
+
+> **(I gotchu, queen)**
+
+
+<img width="368" height="367" alt="Rosita from The Walking Dead" src="https://github.com/user-attachments/assets/bbc0e577-69af-4270-8ffd-fc17d74e46dc" />  
+
+
 ---
