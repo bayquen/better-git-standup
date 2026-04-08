@@ -2,6 +2,7 @@
 v1.0  
 Author: [Brandon Bayquen](https://linkedin.com/in/bayquen)
 > *A simple MCP server to remember the context of your work with a single LLM prompt!*  
+<img width="403" height="281" alt="Example-Cursor-Git-Standup" src="https://github.com/user-attachments/assets/60773b01-5723-4102-a19e-51a21a4d5208" />
 
 
 ### **"uhh Brandon, who in the flop is this for?"**
@@ -53,8 +54,8 @@ something like this:
 8.  Open Cursor chat and prompt it to give standup for your project
 
 
-e.g: If you want standup summary for past 7 days, say `Get my standup from the past week for this project`  
-
+- e.g: If you want standup summary for past week, say `Get my standup from the past week for this project`  
+- Try getting standup for today or yesterday, too!
 
 9.  Watch it output clean standup based on your repo's git commits!  
 
