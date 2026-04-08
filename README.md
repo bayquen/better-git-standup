@@ -2,6 +2,7 @@
 v1.0  
 Author: [Brandon Bayquen](https://linkedin.com/in/bayquen)
 > *A simple MCP server to remember the context of your work with a single LLM prompt!*  
+> *It's a local (STDIO) server for fetching and reading git commits from the user's local repo.*  
 <img width="403" height="281" alt="Example-Cursor-Git-Standup" src="https://github.com/user-attachments/assets/60773b01-5723-4102-a19e-51a21a4d5208" />
 
 
@@ -29,10 +30,12 @@ npm --v
 ```
 **Steps:**
 1. `git clone` this repo from your git terminal or thru GitHub Desktop. (URL ref: [Better Git Standup](https://github.com/bayquen/better-git-standup))
-2. At the root of the project, run `npm run build` from your terminal
+2. At the root of the project, run `npm run build` from your terminal.  
+This will create a Node `/build` folder needed for your Agent to connect to the MCP server.
 
 3. In your Cursor IDE, click 'Settings' > 'Tools & MCP'
-4. Under "Installed MCP Servers", click 'New MCP Server' to add a custom server. Cursor's `mcp.json` local file in your machine will open
+4. Under "Installed MCP Servers", click 'New MCP Server' to add a custom server.  
+Cursor's `mcp.json` local file in your machine will open.
 5. Inside `mcp.json`, add the MCP server's schema (using the ABSOLUTE path to `index.js`, the MCP server file copy generated in `/build`), wherever that is in your machine)  
 something like this:
 ```
@@ -50,8 +53,8 @@ something like this:
 > - If you've previously configured other MCP servers for Cursor in `mcp.json`, there's no need to remove them. Just add the 'git-standup-generation' server schema within the "mcpServers" list of objects.  
 6.  Restart Cursor (close it completely and relaunch).  
 > *Relaunching is necessary for the MCP server to integrate.*
-7.  Locate and open the folder of whatever repo you wish to review in Cursor
-8.  Open Cursor chat and prompt it to give standup for your project
+7.  Locate and open the folder of whatever repo you wish to review in Cursor.
+8.  Open Cursor chat and prompt it to give standup for your project,
 
 
 - e.g: If you want standup summary for past week, say `Get my standup from the past week for this project`  
