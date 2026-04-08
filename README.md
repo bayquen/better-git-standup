@@ -29,8 +29,7 @@ npm --v
 1. `git clone` this repo from your git terminal or thru GitHub Desktop. (URL ref: [Better Git Standup](https://github.com/bayquen/better-git-standup))
 2. At the root of the project, run `npm run build` from your terminal
 
-> ### If using Cursor: 
-3. Click 'Settings' > 'Tools & MCP'
+3. In your Cursor IDE, click 'Settings' > 'Tools & MCP'
 4. Under "Installed MCP Servers", click 'New MCP Server' to add a custom server. Cursor's `mcp.json` local file in your machine will open
 5. Inside `mcp.json`, add the MCP server's schema (using the ABSOLUTE path to `index.js`, the MCP server file copy generated in `/build`), wherever that is in your machine)  
 something like this:
@@ -47,7 +46,8 @@ something like this:
 > **IMPORTANT NOTES**:  
 > - To avoid confusion (for both you and AI), the standup MCP server itself is called `git-standup-generation`. I chose this name to give AI more context on the MCP server's purpose. This is standard practice :)
 > - If you've previously configured other MCP servers for Cursor in `mcp.json`, there's no need to remove them. Just add the 'git-standup-generation' server schema within the "mcpServers" list of objects.  
-6.  Restart Cursor (close it completely and relaunch)
+6.  Restart Cursor (close it completely and relaunch).  
+> *Relaunching is necessary for the MCP server to integrate.*
 7.  Locate and open the folder of whatever repo you wish to review in Cursor
 8.  Open Cursor chat and prompt it to give standup for your project
 
