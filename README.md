@@ -1,10 +1,11 @@
-## Better Git Standup >:)
----
-> *An MCP server to remember the context of your work with a single LLM prompt!* 
+## Better Git Standup >:)  
+v1.0
+> *A simple MCP server to remember the context of your work with a single LLM prompt!* 
 
 ### **"uhh Brandon, who in the flop is this for?"**
 - Any technical (or *semi-technical)* folks who want to review their repo commits  
 ...or snoop into others' work, I won't judge ;)
+- Anyone exploring how custom MCP servers are implemented.
 
 ### "How the flip do I use this?"
 1. `git clone` this repo from your git terminal or thru GitHub Desktop. (URL ref: [Better Git Standup](https://github.com/bayquen/better-git-standup))
@@ -24,7 +25,9 @@
   }
 }
 ```
-> NOTE: if you have any existing MCP servers configured in `mcp.json`, there's no need to remove them. Just add the "git-standup-generation' server schema within the "mcpServers" list of objects.
+> **IMPORTANT NOTES**:  
+> - To avoid confusion (for both you and AI), the standup MCP server itself is called `git-standup-generation`. I chose this name to give AI more context on the MCP server's purpose. This is standard practice :)
+> - If you've previously configured other MCP servers for Cursor in `mcp.json`, there's no need to remove them. Just add the 'git-standup-generation' server schema within the "mcpServers" list of objects.
 
 - Ask an AI Agent like Cursor, Claude Code, or your preferred choice to generate stand-up messages.
 > *The only requirement is having well-written `git commit` messages!*
