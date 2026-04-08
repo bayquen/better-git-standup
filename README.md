@@ -1,5 +1,6 @@
 # Better Git Standup >:)  
-v1.0
+v1.0  
+Author: [Brandon Bayquen](https://linkedin.com/in/bayquen)
 > *A simple MCP server to remember the context of your work with a single LLM prompt!*  
 
 
@@ -72,6 +73,15 @@ e.g: If you want standup summary for past 7 days, say `Get my standup from the p
 
 
 ---
-## Cursor side note (W.I.P):
-- If you've used Cursor before, you may have noticed that, by default, the AI's `Agent` mode wants you to manually approve steps as it executes tasks for you. To automatically allow execution and make the user experience more efficient:
-...
+## A note on automatic execution for Cursor's 'Agent' mode
+If you've used Cursor before, you may have noticed that, by default, the AI's `Agent` mode wants you to manually approve steps as it executes MCP tool tasks for you. This is for MCP security purposes (e.g. checking for purposeful, malicious code execution via custom MCP servers). To automatically run the `git-standup-generation` server's tools efficiently (without sacrificing security):  
+
+- In Cursor Settings, click 'Agents' > 'Auto-Run Mode' > select 'Use Allowlist'  
+- Then, inside MCP Allowlist, type exactly: `git-standup-generation:*` for automatic execution.  
+- Restart Cursor completely and prompt Cursor for standup!  
+> *For more info, see in-depth guide [here](https://cursor.com/docs/reference/permissions#mcp-allowlist-format)*  
+
+
+#### That's it!
+---
+### AI ENTHUSIASTS: To learn more about the 'what' and 'why' of MCP (Model Context Protocol), see the official docs [HERE!](https://modelcontextprotocol.io/docs/getting-started/intro)  
