@@ -85,3 +85,5 @@ If you've used Cursor before, you may have noticed that, by default, the AI's `A
 #### That's it!
 ---
 ### AI ENTHUSIASTS: To learn more about the 'what' and 'why' of MCP (Model Context Protocol), see the official docs [HERE!](https://modelcontextprotocol.io/docs/getting-started/intro)  
+### Inspo
+- This project is inspired by [Kamran Ahmed's Git Standup](https://github.com/kamranahmedse/git-standup) tool.
