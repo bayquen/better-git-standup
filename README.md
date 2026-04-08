@@ -72,3 +72,6 @@ e.g: If you want standup summary for past 7 days, say `Get my standup from the p
 
 
 ---
+## Cursor side note (W.I.P):
+- If you've used Cursor before, you may have noticed that, by default, the AI's `Agent` mode wants you to manually approve steps as it executes tasks for you. To automatically allow execution and make the user experience more efficient:
+...
