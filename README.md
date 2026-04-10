@@ -1,9 +1,9 @@
 # Better Git Standup >:)  
-v1.0  
+**version: 1.0**  
 Author: [Brandon Bayquen](https://linkedin.com/in/bayquen)
 > *A simple MCP server to remember the context of your work with a single LLM prompt!*  
 > *It's a local (STDIO) server for fetching and reading git commits from the user's local repo.*  
-<img width="403" height="281" alt="Example-Cursor-Git-Standup" src="https://github.com/user-attachments/assets/60773b01-5723-4102-a19e-51a21a4d5208" />
+<img width="359" height="372" alt="Breh" src="https://github.com/user-attachments/assets/d877b8a2-4074-4964-9a28-a15aeb525cfd" />  
 
 
 ### **"uhh Brandon, who in the flop is this for?"**
@@ -54,13 +54,13 @@ something like this:
 6.  Restart Cursor (close it completely and relaunch).  
 > *Relaunching is necessary for the MCP server to integrate.*
 7.  Locate and open the folder of whatever repo you wish to review in Cursor.
-8.  Open Cursor chat and prompt it to give standup for your project,
+8.  Open Cursor chat and prompt* it to give standup for your project,  
 
-
-- e.g: If you want standup summary for past week, say `Get my standup from the past week for this project`  
+- e.g: If you want standup summary for this week, say `Get my standup from the past week for this project`  
 - Try getting standup for today or yesterday, too!
+> *Note: `v1.0` is limited to the following periods: 'today', 'yesterday', and 'past week'.  
 
-9.  Watch it output clean standup based on your repo's git commits!  
+9.  Watch it output standup based on your repo's git commits!  
 
 ---
 **Accurate depiction of YOU after reading your sexy standups:**  
